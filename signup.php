@@ -15,6 +15,7 @@
     <p>djfhgjdfshfdjgh</p>
     <form action="">
         <input type="text" placeholder="Username" required maxlength="50" class="username" name="username" id="username">
+        <input type="password" placeholder="Password" redquired maxlength="50" class="password" name="password" id="password">
     </form>
 =======
 >>>>>>> 3e92b34e3730a73eaec78bce7107d77f39d6e340
