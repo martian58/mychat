@@ -1,0 +1,69 @@
+@font-face {
+    font-family: header-font;
+    src: url(../public/fonts/Summer\ Vibes\ OTF.otf);
+}
+@font-face {
+    font-family: general;
+    src: url(../public/fonts/OpenSans-Regular.ttf);
+}
+body{
+    background-color: rgb(155, 203, 245);
+}
+.container{
+    width: fit-content;
+    min-width: 200px;
+    height: auto;
+    background-color: rgb(40, 219, 213);
+    margin: auto;
+    padding: 20px;
+    display: block;
+    font-family: general;
+}
+
+input[type=text], input[type=email], input[type=password]{
+    height: 35px;
+    width: 300px;
+    border: none;
+    border-radius: 5px;
+    min-width: 200px;
+}
+
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus{
+    outline: none;
+}
+input[type=text]:hover, input[type=email]:hover, input[type=password]:hover{
+    background-color: rgb(181, 214, 243);
+    box-shadow: 2px 2px 5px black;
+}
+#alert{
+    text-align: center;
+    font-size: 18px;
+    color: rgb(123, 26, 26);
+}
+.statusbar{
+    height: 40px;
+    width: 300px;
+    background-color: rgb(158, 242, 232);
+}
+.chatbox{
+    height: 300px;
+    width: 300px;
+    background-color: rgb(143, 236, 143);
+    word-wrap: break-word;
+    overflow-y: scroll;
+}
+div.navbar{
+    height: 20px;
+    display: inline;
+    background-color: blue;
+}
+ul{
+    list-style: none;
+}
+li {
+    display: inline-block;
+    margin-right: 20px;
+}
+.message-area{
+    background-color: blueviolet;
+}
