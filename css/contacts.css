@@ -48,10 +48,9 @@ input[type=text]:hover, input[type=email]:hover, input[type=password]:hover{
 .chatbox{
     height: 300px;
     width: 300px;
-    background-color: rgb(4, 20, 4);
+    background-color: rgb(143, 236, 143);
     word-wrap: break-word;
     overflow-y: scroll;
-    padding: 5px;
 }
 div.navbar{
     height: 20px;
@@ -68,12 +67,12 @@ li {
 .message-area{
     background-color: blueviolet;
 }
-.message-div{
-    background-color: rgb(71, 159, 237);
+
+#contact-usernames{
+    background-color: rgb(107, 171, 226);
     color: white;
-    padding: 5px;
-    border-radius: 5px 0px 5px 0px;
-    width: 200px;
     height: 40px;
-    word-wrap: break-word;
+    width: 200px;
+    border-radius: 5px;
+    margin-top: 5px;
 }
