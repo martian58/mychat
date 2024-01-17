@@ -48,7 +48,7 @@ input[type=text]:hover, input[type=email]:hover, input[type=password]:hover{
 .chatbox{
     height: 300px;
     width: 300px;
-    background-color: rgb(4, 20, 4);
+    background-color: rgb(181, 230, 181);
     word-wrap: break-word;
     overflow-y: scroll;
     padding: 5px;
@@ -76,4 +76,7 @@ li {
     width: 200px;
     height: 40px;
     word-wrap: break-word;
+}
+a{
+    text-decoration: none;
 }

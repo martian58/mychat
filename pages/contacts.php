@@ -17,9 +17,6 @@
     <title>Home</title>
 </head>
 <body>
-    <?php
-        // echo $username;
-    ?>
     <div class="container">
         <div class="navbar">
             <ul>
@@ -36,7 +33,7 @@
             </div>
             <div class="chatbox" id="chatbox">
                 <?php
-                $reciever_usr_name = "Fuad";
+                $reciever_usr_name = "user1";
                 include '../api.php';
             
                 $sql = "select username from users;";
@@ -45,12 +42,21 @@
                     $num = mysqli_num_rows($result);
                     if($num > 0){
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<div id="contact-usernames">' .$row['username'] . '</div>';
+                            $username = $_SESSION['username'];
+                            if($row['username'] != $username){
+                                 echo '<a href="home.php"><div id="contact-usernames">' .$row['username'] . '</div></a>';
+                            }
                         }
                 
                     }
                 }
                 ?>
+            </div>
+            <div class="message-area">
+                <form action="../php/create_chat.php" method="post">
+                    <input type="text" name="reciever_usr_name" id="message_input" class="message_input">
+                    <input type="submit" value="Start Chat">
+                </form>
             </div>
         </div>
     </div>

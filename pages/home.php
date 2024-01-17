@@ -1,12 +1,35 @@
 <?php
     session_start();
-    
+    include '../api.php';
     if(!isset($_SESSION['username'])){
         header('location:login.php');
     }
-    $username = $_SESSION['username'];
-    
 ?>
+<?php
+$sender_usr_name = $_SESSION['username'];
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    include '../api.php';   
+    $sender_usr_name = $_SESSION['username'];
+    $reciever_usr_name = $_POST['reciever_usr_name'];
+
+    $sql = "select * from chatpairs where (user1='$sender_usr_name' and user2='$reciever_usr_name') or (user2='$sender_usr_name' and user1='$reciever_usr_name'); ";
+    $result = mysqli_query($connect, $sql);
+    if(!$result){
+        echo "chatpair doesnt exist";
+       $sql = "insert into chatpairs (user1, user2) values ($sender_usr_name, $reciever_usr_name)";
+       $result = mysqli_query($connect, $sql);
+       if($result){
+            echo "inserted";
+            header("location:../pages/home.php");
+       }
+    }else{
+       header("location:../pages/home.php");
+    }
+}
+
+
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +45,9 @@
             background-color: rgb(20, 71, 115);
             color: white; 
             margin-top: 5px;
+        }
+        #date{
+            font-size: 12px;
         }
     </style>
     <title>Home</title>
@@ -41,21 +67,21 @@
         <div class="chat">
             <div class="statusbar">
                 <?php
-                    echo $username;
+
+                    echo "Sender:".$sender_usr_name;
                 ?>
             </div>
             <div class="chatbox" id="chatbox">
                 <?php
-                $reciever_usr_name = "Fuad";
-                include '../api.php';
-            
-                $sql = "select message from messages where sender_usr_name='$username' and reciever_usr_name='$reciever_usr_name';";
+                $reciever_usr_name ="user1";
+                $sender_usr_name = $_SESSION['username'];
+                $sql = "select * from messages where sender_usr_name='$sender_usr_name' and reciever_usr_name='$reciever_usr_name';";
                 $result = mysqli_query($connect, $sql);
                 if($result){
                     $num = mysqli_num_rows($result);
                     if($num > 0){
                         while ($row = mysqli_fetch_assoc($result)) {
-                            echo '<div class="message-div" >' .$username .'<br>' . $row['message'] . '</div>';
+                            echo '<div class="message-div" >' .$row['sender_usr_name'] .'<br>' . $row['message'] ."<br>"."<p id='date'>".$row['sent_date']."</p>". '</div>';
                         }
                 
                     }
